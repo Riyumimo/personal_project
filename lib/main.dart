@@ -1,3 +1,5 @@
+import 'package:dicoding_project/presentation/auth/login/login_screen.dart';
+import 'package:dicoding_project/presentation/auth/register/register_screen.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "UI KIT",
         themeMode: ThemeMode.light,
-        home: MainPage(),
+        home: LoginScreen(),
       ),
     );
   }
