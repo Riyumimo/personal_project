@@ -1,3 +1,4 @@
+import 'package:dicoding_project/services/auth/register_service/register_services.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class _SignUpViewState extends State<RegisterScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final RegisterServices _registerServices = RegisterServices();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -271,11 +273,18 @@ class _SignUpViewState extends State<RegisterScreen> {
             ),
           ),
         ),
-        onPressed: () {
+        onPressed: () async {
           // Validate returns true if the form is valid, or false otherwise.
           if (_formKey.currentState!.validate()) {
             // ... Navigate To your Home Page
-            Navigator.pop(context);
+            final duration = await _registerServices.measureExecutionTime(() {
+              _registerServices.registerWithEmailPassword(
+                  emailController.value.text, passwordController.value.text);
+            });
+            await Future.delayed(
+              duration,
+            ).then((value) => Navigator.pop(context));
+            // Navigator.pop(context);
           }
         },
         child: const Text('Sign up'),

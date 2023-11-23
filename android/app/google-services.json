@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "331180816921",
+    "project_id": "kyu-project-b0217",
+    "storage_bucket": "kyu-project-b0217.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331180816921:android:024e747bbb328de8b9c888",
+        "android_client_info": {
+          "package_name": "com.example.dicoding_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331180816921-kkebsi03m9ghtr727gqdo1392v8nbmot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCesEPQZeWb5fW0HQQeK7rpEdVEpjBTq30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331180816921-kkebsi03m9ghtr727gqdo1392v8nbmot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

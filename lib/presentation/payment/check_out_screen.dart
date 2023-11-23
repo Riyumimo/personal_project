@@ -12,7 +12,7 @@ class CheckoutScreen extends StatelessWidget {
           width: 122,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            color: Color(0xffA8A8A8),
+            color: const Color(0xffA8A8A8),
           ),
         ),
         centerTitle: false,
@@ -22,17 +22,17 @@ class CheckoutScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => Container(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          margin: EdgeInsets.only(bottom: 36, top: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          margin: const EdgeInsets.only(bottom: 36, top: 20),
           child: Row(
             children: [
               Container(
                 height: 80,
                 width: 80,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Color(0xffC4C4C4)),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16.0,
               ),
               Column(
@@ -43,10 +43,10 @@ class CheckoutScreen extends StatelessWidget {
                     width: 183,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: Color(0xffA8A8A8),
+                      color: const Color(0xffA8A8A8),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -54,7 +54,7 @@ class CheckoutScreen extends StatelessWidget {
                     width: 244,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: Color(0xffD0D0D0),
+                      color: const Color(0xffD0D0D0),
                     ),
                   ),
                 ],
@@ -62,7 +62,7 @@ class CheckoutScreen extends StatelessWidget {
             ],
           ),
         ),
-        separatorBuilder: (context, index) => Divider(
+        separatorBuilder: (context, index) => const Divider(
           color: Color(0xffD0D0D0),
           thickness: 1,
         ),
