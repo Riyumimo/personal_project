@@ -1,9 +1,7 @@
 import 'package:dicoding_project/presentation/auth/login/login_screen.dart';
 import 'package:dicoding_project/presentation/auth/register/register_screen.dart';
-import 'package:dicoding_project/presentation/home/home_screen.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
 import 'package:dicoding_project/presentation/payment/check_out_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
@@ -45,4 +43,3 @@ class AppRoute {
         builder: (context, state) => const CheckoutScreen()),
   ]);
 }
-

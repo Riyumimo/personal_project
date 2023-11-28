@@ -3,9 +3,8 @@
 import 'package:dicoding_project/presentation/auth/register/register_screen.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
 import 'package:dicoding_project/services/auth/login_services/login_services.dart';
-import 'package:dicoding_project/services/send_message/send_message.dart';
+// import 'package:dicoding_project/services/send_message/send_message.dart';
 import 'package:flutter/material.dart';
-import 'package:info_popup/info_popup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class _LoginViewState extends State<LoginScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final MessageEvent _event = MessageEvent();
+  // final MessageEvent _event = MessageEvent();
   final _formKey = GlobalKey<FormState>();
   final LoginServices _loginServices = LoginServices();
 
