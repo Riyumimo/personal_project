@@ -9,6 +9,7 @@ import 'package:info_popup/info_popup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+  static const name = "/login";
 
   @override
   State<LoginScreen> createState() => _LoginViewState();
