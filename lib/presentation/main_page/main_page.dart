@@ -37,9 +37,6 @@ class _MainPageState extends State<MainPage> {
     Container(
       color: Colors.green,
     ),
-    Container(
-      color: Colors.blue,
-    ),
   ];
   final List<BottomNavyBarItem> _itemBar = [
     BottomNavyBarItem(

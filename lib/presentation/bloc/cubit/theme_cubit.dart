@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,11 +7,11 @@ class ThemeCubit extends Cubit<ThemeData> {
   static final ThemeData _themeData = initialTheme();
   static final _lightTheme = ThemeData.light(useMaterial3: true);
   static final _darkTheme = ThemeData.dark(useMaterial3: true);
-
   void getThemeFromPref() async {
+    print(state.brightness.name);
     final String? theme = await getPrefTheme();
     if (theme != null) {
-      if (theme == Brightness.dark.toString()) {
+      if (theme == Brightness.dark.name) {
         emit(_darkTheme);
       } else {
         emit(_lightTheme);

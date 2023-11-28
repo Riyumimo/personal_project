@@ -81,6 +81,7 @@ class _AppViewState extends State<AppView> {
       designSize: const Size(390, 844),
       builder: (context, child) => BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, state) {
+          print(state.brightness);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             // title: "UI KIT",

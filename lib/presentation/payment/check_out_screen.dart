@@ -24,7 +24,6 @@ class CheckoutScreen extends StatelessWidget {
       body: ListView.separated(
         itemBuilder: (context, index) => Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          margin: const EdgeInsets.only(bottom: 36, top: 20),
           child: Row(
             children: [
               Container(
