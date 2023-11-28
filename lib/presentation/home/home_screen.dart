@@ -1,7 +1,9 @@
 import 'package:dicoding_project/gen/assets.gen.dart';
+import 'package:dicoding_project/presentation/bloc/Authentication/authentacion_bloc.dart';
 import 'package:dicoding_project/presentation/product/product_detail.dart';
 import 'package:dicoding_project/presentation/res/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -58,7 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Spacer(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        context
+                            .read<AuthentacionBloc>()
+                            .add(AuthenticationLogoutRequested());
                       },
                       child: Padding(
                         padding: EdgeInsets.only(right: 24.w),

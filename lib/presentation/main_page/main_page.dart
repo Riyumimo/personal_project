@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
-  static const name = "/";
+  static const name = "/main";
   @override
   State<MainPage> createState() => _MainPageState();
 }

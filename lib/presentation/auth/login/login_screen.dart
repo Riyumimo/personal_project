@@ -1,10 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:dicoding_project/presentation/auth/register/register_screen.dart';
+import 'package:dicoding_project/presentation/bloc/Authentication/authentacion_bloc.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
 import 'package:dicoding_project/services/auth/login_services/login_services.dart';
 // import 'package:dicoding_project/services/send_message/send_message.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -243,16 +245,8 @@ class _LoginViewState extends State<LoginScreen> {
                 /// Navigate To Login Screen
                 GestureDetector(
                   onTap: () async {
-                    final token = await _loginServices.loginWithAnonymous();
-                    token
-                        ? Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => const RegisterScreen()))
-                        : Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => const MainPage()));
+                    // final token = await _loginServices.loginWithAnonymous();
+                    // _loginServices.getStatusAuthenticated.first;
                     nameController.clear();
                     emailController.clear();
                     passwordController.clear();
@@ -306,29 +300,33 @@ class _LoginViewState extends State<LoginScreen> {
             await Future.delayed(const Duration(milliseconds: 500), () {
               Navigator.of(context).pop();
             });
-            final token = await _loginServices.loginWithEmail(
+
+            await _loginServices.loginWithEmail(
                 emailController.value.text, passwordController.value.text);
-            token
-                ? Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MainPage()))
-                : showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Popup Title'),
-                        content: Text('Ini adalah isi dari popup.'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () {
-                              // Tutup dialog saat tombol ditekan
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Tutup'),
-                          ),
-                        ],
-                      );
-                    });
-            return;
+            context.read<AuthentacionBloc>().add(AuthenticationEventLogIn(
+                email: emailController.value.text,
+                password: passwordController.value.text));
+            // token
+            //     ? Navigator.push(context,
+            //         MaterialPageRoute(builder: (context) => const MainPage()))
+            //     : showDialog(
+            //         context: context,
+            //         builder: (BuildContext context) {
+            //           return AlertDialog(
+            //             title: Text('Popup Title'),
+            //             content: Text('Ini adalah isi dari popup.'),
+            //             actions: <Widget>[
+            //               TextButton(
+            //                 onPressed: () {
+            //                   // Tutup dialog saat tombol ditekan
+            //                   Navigator.of(context).pop();
+            //                 },
+            //                 child: Text('Tutup'),
+            //               ),
+            //             ],
+            //           );
+            //         });
+            // return;
           }
         },
         child: const Text('Login'),
