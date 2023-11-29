@@ -8,3 +8,5 @@ final class CartInitial extends CartState {}
 final class CartLoaded extends CartState {}
 
 final class CartLoading extends CartState {}
+
+final class CartError extends CartState {}

@@ -1,5 +1,5 @@
-import 'package:dicoding_project/presentation/auth/login/login_screen.dart';
-import 'package:dicoding_project/presentation/auth/register/register_screen.dart';
+import 'package:dicoding_project/presentation/auth_screen/login/login_screen.dart';
+import 'package:dicoding_project/presentation/auth_screen/register/register_screen.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
 import 'package:dicoding_project/presentation/payment/cart_screen.dart';
 import 'package:dicoding_project/presentation/payment/check_out_screen.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:dicoding_project/presentation/auth/register/register_screen.dart';
+import 'package:dicoding_project/presentation/auth_screen/register/register_screen.dart';
 import 'package:dicoding_project/presentation/bloc/Authentication/authentacion_bloc.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
 import 'package:dicoding_project/services/auth/login_services/login_services.dart';

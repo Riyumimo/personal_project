@@ -1,5 +1,5 @@
 import 'package:dicoding_project/firebase_options.dart';
-import 'package:dicoding_project/presentation/auth/login/login_screen.dart';
+import 'package:dicoding_project/presentation/auth_screen/login/login_screen.dart';
 import 'package:dicoding_project/presentation/bloc/Authentication/authentacion_bloc.dart';
 import 'package:dicoding_project/presentation/bloc/cubit/theme_cubit.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
