@@ -2,7 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:dicoding_project/gen/assets.gen.dart';
 import 'package:dicoding_project/presentation/home/home_screen.dart';
 import 'package:dicoding_project/presentation/notification/notification_screen.dart';
-import 'package:dicoding_project/presentation/payment/check_out_screen.dart';
+import 'package:dicoding_project/presentation/payment/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +32,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _page = [
     const HomeScreen(),
-    const CheckoutScreen(),
+    const CartScreen(),
     const NotifScreen(),
     Container(
       color: Colors.green,
