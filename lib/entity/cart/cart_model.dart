@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../product/product_model.dart';
@@ -17,4 +16,7 @@ class CartModel with _$CartModel {
     required int shippingFee,
     required double total,
   }) = _CartModel;
+  // @override
+  // List<Object?> get props =>
+  //     [product, subtotal, amount, discount, feeApp, shippingFee, total];
 }

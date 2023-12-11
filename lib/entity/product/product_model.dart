@@ -8,6 +8,7 @@ part 'product_model.g.dart';
 @freezed
 class Product with _$Product {
   factory Product({
+    required int id,
     required String name,
     required int price,
     required String desc,

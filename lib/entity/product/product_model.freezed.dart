@@ -20,6 +20,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String name,
+      {int id,
+      String name,
       int price,
       String desc,
       String type,
@@ -59,6 +61,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? price = null,
     Object? desc = null,
@@ -67,6 +70,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? createAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -103,7 +110,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
+      {int id,
+      String name,
       int price,
       String desc,
       String type,
@@ -122,6 +130,7 @@ class __$$ProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? price = null,
     Object? desc = null,
@@ -130,6 +139,10 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? createAt = null,
   }) {
     return _then(_$ProductImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -162,7 +175,8 @@ class __$$ProductImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductImpl implements _Product {
   _$ProductImpl(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.price,
       required this.desc,
       required this.type,
@@ -172,6 +186,8 @@ class _$ProductImpl implements _Product {
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
 
+  @override
+  final int id;
   @override
   final String name;
   @override
@@ -187,7 +203,7 @@ class _$ProductImpl implements _Product {
 
   @override
   String toString() {
-    return 'Product(name: $name, price: $price, desc: $desc, type: $type, amount: $amount, createAt: $createAt)';
+    return 'Product(id: $id, name: $name, price: $price, desc: $desc, type: $type, amount: $amount, createAt: $createAt)';
   }
 
   @override
@@ -195,6 +211,7 @@ class _$ProductImpl implements _Product {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.desc, desc) || other.desc == desc) &&
@@ -207,7 +224,7 @@ class _$ProductImpl implements _Product {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, price, desc, type, amount, createAt);
+      Object.hash(runtimeType, id, name, price, desc, type, amount, createAt);
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +242,8 @@ class _$ProductImpl implements _Product {
 
 abstract class _Product implements Product {
   factory _Product(
-      {required final String name,
+      {required final int id,
+      required final String name,
       required final int price,
       required final String desc,
       required final String type,
@@ -234,6 +252,8 @@ abstract class _Product implements Product {
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
+  @override
+  int get id;
   @override
   String get name;
   @override
