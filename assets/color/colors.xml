@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="gray_c4">#C4C4C4</color>
+    <color name="primary-100">#3F51B5</color>
+    <color name="primary-200">#757de8</color>
+    <color name="primary-300">#dedeff</color>
+    <color name="accent-100">#2196F3</color>
+    <color name="accent-200">#003f8f</color>
+    <color name="text-100">#333333</color>
+    <color name="text-200">#5c5c5c</color>
+    <color name="bg-100">#FFFFFF</color>
+    <color name="bg-200">#f5f5f5</color>
+    <color name="bg-300">#cccccc</color>
+    
 </resources>

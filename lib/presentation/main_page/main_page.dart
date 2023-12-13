@@ -136,7 +136,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       bottomNavigationBar: BottomNavyBar(
-          containerHeight: 90.h,
+          containerHeight: 70.h,
           selectedIndex: _currentIndex,
           iconSize: 42,
           itemCornerRadius: 16,

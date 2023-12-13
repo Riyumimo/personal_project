@@ -24,19 +24,21 @@ class $AssetsColorGen {
 class $AssetsImageGen {
   const $AssetsImageGen();
 
+  /// File path: assets/image/buy_online.png
+  AssetGenImage get buyOnline => const AssetGenImage('assets/image/buy_online.png');
+
   /// File path: assets/image/watch.jpeg
   AssetGenImage get watch => const AssetGenImage('assets/image/watch.jpeg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [watch];
+  List<AssetGenImage> get values => [buyOnline, watch];
 }
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
   /// File path: assets/svg/control_camera.svg
-  SvgGenImage get controlCamera =>
-      const SvgGenImage('assets/svg/control_camera.svg');
+  SvgGenImage get controlCamera => const SvgGenImage('assets/svg/control_camera.svg');
 
   /// File path: assets/svg/home.svg
   SvgGenImage get home => const SvgGenImage('assets/svg/home.svg');
@@ -46,12 +48,10 @@ class $AssetsSvgGen {
       const SvgGenImage('assets/svg/local_convenience_store.svg');
 
   /// File path: assets/svg/location_city.svg
-  SvgGenImage get locationCity =>
-      const SvgGenImage('assets/svg/location_city.svg');
+  SvgGenImage get locationCity => const SvgGenImage('assets/svg/location_city.svg');
 
   /// File path: assets/svg/notification.svg
-  SvgGenImage get notification =>
-      const SvgGenImage('assets/svg/notification.svg');
+  SvgGenImage get notification => const SvgGenImage('assets/svg/notification.svg');
 
   /// List of all assets
   List<SvgGenImage> get values =>

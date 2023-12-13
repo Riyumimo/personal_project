@@ -1,5 +1,8 @@
 import 'package:dicoding_project/gen/assets.gen.dart';
+import 'package:dicoding_project/gen/colors.gen.dart';
 import 'package:dicoding_project/presentation/bloc/Authentication/authentacion_bloc.dart';
+import 'package:dicoding_project/presentation/category/category_screen.dart';
+import 'package:dicoding_project/presentation/home/component/catergory.dart';
 import 'package:dicoding_project/presentation/product/product_detail.dart';
 import 'package:dicoding_project/presentation/res/styles.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +19,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<String> categories = ["House", "Hotels", "Apartment"];
+  PageController? _pageController;
+
+  int _currentPage = 0;
+  @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 60.r,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(45.r),
-                            color: ColorName.grayC4),
+                            color: ColorName.text100),
                       ),
                     ),
                     SizedBox(width: 10.w),
@@ -51,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: GoogleFonts.workSans(
                         textStyle: TextStyle(
                           fontSize: 16.sp,
-                          color: Colors.black,
+                          color: ColorName.bg100,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w600,
                         ),
@@ -82,18 +93,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Find your place to stay",
-                      style: GoogleFonts.workSans(
-                        textStyle: TextStyle(
-                          fontSize: 24.sp,
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
                     TextFormField(
                       readOnly: true,
                       //false
@@ -110,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // hintStyle: textFieldPlaceholderTextStyle(context),
                         isDense: true,
                         filled: true,
-                        fillColor: ColorName.grayC4,
+                        fillColor: ColorName.bg200,
                         focusedBorder: AppStyles.focusedTransparentBorder,
                         disabledBorder: AppStyles.focusedTransparentBorder,
                         enabledBorder: AppStyles.focusedTransparentBorder,
@@ -124,14 +123,41 @@ class _HomeScreenState extends State<HomeScreen> {
                       onEditingComplete: () {},
                       onChanged: (val) {},
                       // validator: (val) {},
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                      onTap: () {},
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 45.h),
+              SizedBox(height: 35.h),
+              Padding(
+                padding: EdgeInsets.only(left: 24.w, right: 24.w),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: PageView(
+                        controller: _pageController,
+                        onPageChanged: (value) {
+                          setState(() {
+                            _currentPage = value;
+                          });
+                        },
+                        children: List.generate(
+                            3,
+                            (index) => const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 20),
+                                  child: BannerPromotion(),
+                                )),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    _dotIndicator()
+                  ],
+                ),
+              ),
+              SizedBox(height: 30.h),
               Padding(
                 padding: EdgeInsets.only(left: 24.w, right: 24.w),
                 child: Column(
@@ -152,207 +178,141 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        Text(
-                          "See all",
-                          style: GoogleFonts.workSans(
-                            textStyle: TextStyle(
-                              fontSize: 14.sp,
-                              color: Colors.black,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30.h),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 140.h,
-                child: ListView.separated(
-                  padding: EdgeInsets.only(left: 24.w),
-                  physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics()),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length,
-                  itemBuilder: (c, i) {
-                    return Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.r),
-                          child: Container(
-                            width: 109.w,
-                            height: 140.h,
-                            color: ColorName.grayC4,
-                            child: Stack(
-                              children: [
-                                Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Container(
-                                    height: 39.h,
-                                    color: const Color(0xff525252),
-                                    child: Center(
-                                      child: Text(
-                                        categories[i],
-                                        maxLines: 2,
-                                        style: GoogleFonts.workSans(
-                                          textStyle: TextStyle(
-                                            fontSize: 14.sp,
-                                            color: Colors.white,
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      width: 17.w,
-                    );
-                  },
-                ),
-              ),
-              SizedBox(height: 52.h),
-              Padding(
-                padding: EdgeInsets.only(left: 24.w, right: 24.w),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Popular",
-                          style: GoogleFonts.workSans(
-                            textStyle: TextStyle(
-                              fontSize: 20.sp,
-                              color: Colors.black,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "See all",
-                          style: GoogleFonts.workSans(
-                            textStyle: TextStyle(
-                              fontSize: 14.sp,
-                              color: Colors.black,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 17.h),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 165.h,
-                child: ListView.separated(
-                  padding: EdgeInsets.only(left: 24.w),
-                  physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics()),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 4,
-                  itemBuilder: (c, i) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ProductDetail()));
-                      },
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8.r),
-                            child: Container(
-                              width: 244.w,
-                              height: 165.h,
-                              color: ColorName.grayC4,
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.bottomLeft,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                          left: 15.w, bottom: 12.w),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Tai Po Beach",
-                                            maxLines: 1,
-                                            style: GoogleFonts.workSans(
-                                              textStyle: TextStyle(
-                                                fontSize: 16.sp,
-                                                color: Colors.black,
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              const Icon(Icons.edit_location),
-                                              SizedBox(width: 4.w),
-
-                                              /// Todo : This should be tested for overflow
-                                              Text(
-                                                "Kam Ling, Hong Kong",
-                                                maxLines: 1,
-                                                style: GoogleFonts.workSans(
-                                                  textStyle: TextStyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.black,
-                                                    fontStyle: FontStyle.normal,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CategoryScreen()));
+                          },
+                          child: Text(
+                            "See all",
+                            style: GoogleFonts.workSans(
+                              textStyle: TextStyle(
+                                fontSize: 14.sp,
+                                color: ColorName.primary100,
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      width: 42.w,
-                    );
-                  },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: List.generate(
+                    3,
+                    (index) => SizedBox(
+                          height: 140.h,
+                          child: const CategoryContainer(
+                              categoryName: "categoryName",
+                              categoryColor: ColorName.primary100,
+                              icon: Icons.build),
+                        )),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _dotIndicator() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List<Widget>.generate(3, (int index) {
+        return Container(
+          width: 10,
+          height: 10,
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color:
+                _currentPage == index ? ColorName.primary100 : ColorName.bg300,
+          ),
+        );
+      }),
+    );
+  }
+}
+
+class BannerPromotion extends StatelessWidget {
+  const BannerPromotion({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ProductDetail()));
+      },
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16.r),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              color: ColorName.bg300,
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Container(
+                      padding: EdgeInsets.only(left: 15.w, bottom: 12.w),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Tai Po Beach",
+                            maxLines: 1,
+                            style: GoogleFonts.workSans(
+                              textStyle: TextStyle(
+                                fontSize: 16.sp,
+                                color: Colors.black,
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.edit_location),
+                              SizedBox(width: 4.w),
+
+                              /// Todo : This should be tested for overflow
+                              Text(
+                                "Kam Ling, Hong Kong",
+                                maxLines: 1,
+                                style: GoogleFonts.workSans(
+                                  textStyle: TextStyle(
+                                    fontSize: 10.sp,
+                                    color: Colors.black,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

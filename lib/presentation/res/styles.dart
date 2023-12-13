@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ColorName {
-  static var grayC4 = const Color(0xffC4C4C4);
-  static var black = const Color(0x00ff0000);
-  static var white = const Color(0xffffffff);
-}
-
 class Dimension {
   static double defaultTextSize = 16.00;
   static double smallTextSize = 14.00;

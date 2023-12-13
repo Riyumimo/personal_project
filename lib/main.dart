@@ -4,7 +4,6 @@ import 'package:dicoding_project/presentation/bloc/Authentication/authentacion_b
 import 'package:dicoding_project/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:dicoding_project/presentation/bloc/cubit/theme_cubit.dart';
 import 'package:dicoding_project/presentation/main_page/main_page.dart';
-import 'package:dicoding_project/presentation/payment/check_out_screen.dart';
 import 'package:dicoding_project/route.dart';
 import 'package:dicoding_project/services/auth/login_services/login_services.dart';
 import 'package:dicoding_project/services/product.dart';
@@ -87,44 +86,41 @@ class _AppViewState extends State<AppView> {
       designSize: const Size(390, 844),
       builder: (context, child) => BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, state) {
-          print(state.brightness);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            // title: "UI KIT",
-            // themeMode: ThemeMode.dark,
             theme: state,
             navigatorKey: _navigatorKey,
-            builder: (context, child) {
-              return BlocListener<AuthentacionBloc, AuthentacionState>(
-                listener: (context, state) {
-                  switch (state.status) {
-                    case AuthenticationStatus.authenticated:
-                      _navigator.pushAndRemoveUntil<void>(MaterialPageRoute(
-                        builder: (context) {
-                          return const MainPage();
-                        },
-                      ), (route) => false);
-                    case AuthenticationStatus.unauthenticated:
-                      _navigator.pushAndRemoveUntil<void>(MaterialPageRoute(
-                        builder: (context) {
-                          return const LoginScreen();
-                        },
-                      ), (route) => false);
-                    case AuthenticationStatus.unauthenticated:
-                      _navigator.pushAndRemoveUntil<void>(MaterialPageRoute(
-                        builder: (context) {
-                          return const LoginScreen();
-                        },
-                      ), (route) => false);
-                    case AuthenticationStatus.unknown:
-                      break;
-                  }
-                },
-                child: child,
-              );
-            },
-            onGenerateRoute: AppRoutes.onGenerateRoute,
-            // home: const CheckOutScreen(),
+            // builder: (context, child) {
+            //   return BlocListener<AuthentacionBloc, AuthentacionState>(
+            //     listener: (context, state) {
+            //       switch (state.status) {
+            //         case AuthenticationStatus.authenticated:
+            //           _navigator.pushAndRemoveUntil<void>(MaterialPageRoute(
+            //             builder: (context) {
+            //               return const MainPage();
+            //             },
+            //           ), (route) => false);
+            //         case AuthenticationStatus.unauthenticated:
+            //           _navigator.pushAndRemoveUntil<void>(MaterialPageRoute(
+            //             builder: (context) {
+            //               return const LoginScreen();
+            //             },
+            //           ), (route) => false);
+            //         case AuthenticationStatus.unauthenticated:
+            //           _navigator.pushAndRemoveUntil<void>(MaterialPageRoute(
+            //             builder: (context) {
+            //               return const LoginScreen();
+            //             },
+            //           ), (route) => false);
+            //         case AuthenticationStatus.unknown:
+            //           break;
+            //       }
+            //     },
+            //     child: child,
+            //   );
+            // },
+            // onGenerateRoute: AppRoutes.onGenerateRoute,
+            home: const MainPage(),
           );
         },
       ),
